@@ -1,0 +1,230 @@
+*{ 
+  margin: 0; 
+  padding: 0; 
+  box-sizing: 
+  border-box;
+ } 
+ 
+body { 
+  margin-top: 0%;
+  font-family: 'Segoe UI', sans-serif; 
+ }
+ .sub-heading { 
+  display: flex;
+   justify-content: space-between; 
+   padding: 15px 30px; }
+  .tit { 
+    font-size: 30px; 
+  }
+   .logout {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.resource-title{
+  margin-top: 0%;
+  margin: 20px;
+  text-align: center;
+}
+
+.resource-dash {
+  margin: 20px;
+  text-align: center;
+  color: #666;
+}
+
+.nav {
+  padding: 10px 16px;
+  border-radius: 8px;
+  background: white;
+  transition: 0.3s;
+  color: black;
+}
+
+.nav:hover {
+  background: #cad7f4;
+  color: rgb(0, 0, 0);
+}
+
+.profile-img {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+}
+
+.wel {
+  margin-top: 0%;
+  margin: 20px 30px;
+}
+
+.main-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.resource-title {
+  margin-top: 0%;
+  margin: 20px;
+}
+
+.main-card {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+  box-shadow: azure;
+  margin-bottom: 40px;
+}
+
+.card-link {
+  text-decoration: none;
+}
+
+/* CARD */
+.card {
+  width: 270px;
+  padding: 20px;
+  border-radius: 18px;
+  background: white;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+}
+
+/* ICON */
+.card-icon {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  margin-bottom: 10px;
+}
+
+.card-icon svg {
+  width: 30px !important;
+  height: 30px !important;
+  color: white;
+}
+
+/* COLORS */
+.green {
+  background: #22c55e;
+}
+
+.orange {
+  background: #f59e0b;
+}
+
+.blue {
+  background: #3b82f6;
+}
+
+.red {
+  background: #ef4444;
+}
+
+.darkgreen {
+  background: #16a34a;
+}
+
+/* TEXT */
+.stats {
+  font-size: 13px;
+  color: gray;
+}
+
+/* PROGRESS */
+.progress-bar {
+  height: 6px;
+  background: #e5e7eb;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
+.progress-fill {
+  height: 100%;
+  background: #2563eb;
+  border-radius: 10px;
+}
+
+/* SUMMARY */
+.summary-container {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-left:60px;
+}
+
+.cards {
+
+  width: 370px;
+  padding: 10px;
+  border-radius: 15px;
+  background: white;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+}
+
+.number {
+  font-size: 28px;
+  color: #2563eb;
+}
+
+.numbert {
+  font-size: 28px;
+  color: black;
+}
+
+.numbera {
+  font-size: 28px;
+  color: blue;
+}
+
+.numberm {
+  font-size: 28px;
+  color: #ef4444;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* (duplicate kept as requested) */
+.main-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0px;
+}
+.main-content {
+ margin-left: 0px;
+}
+.tit{
+    margin-left: 0px;
+}.card-icon {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 18px;
+  margin-bottom: 14px;
+  transition: 0.3s ease;
+}
+
+.card-icon svg {
+  width: 48px !important;
+  height: 48px !important;
+  transition: 0.3s ease;
+}
+
+/* popup effect */
+.card:hover .card-icon svg {
+  transform: scale(1.18);
+}

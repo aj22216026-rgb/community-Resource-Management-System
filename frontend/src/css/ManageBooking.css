@@ -1,0 +1,236 @@
+/* =====================================================
+   MANAGE BOOKING PAGE ONLY
+===================================================== */
+
+.resource-booking {
+    width: 85%;
+    margin-left:250px;
+}
+
+/* =====================================================
+   PAGE HEADER
+===================================================== */
+
+.resource-booking .page-header {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 24px;
+}
+
+/* =====================================================
+   BACK BUTTON
+===================================================== */
+
+.resource-booking .back-nav {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+
+    padding: 12px 18px;
+
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+
+    font-size: 14px;
+    font-weight: 600;
+    color: #111827;
+
+    transition: 0.3s ease;
+}
+
+.resource-booking .back-nav:hover {
+    background: #f3f4f6;
+    transform: translateY(-2px);
+}
+
+/* =====================================================
+   CARDS
+===================================================== */
+
+.resource-booking .main-booking,
+.resource-booking .main-approved {
+    background: white;
+    padding: 28px;
+    border-radius: 24px;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+    margin-bottom: 30px;
+    overflow-x: auto;
+}
+
+/* =====================================================
+   HEADINGS
+===================================================== */
+
+.resource-booking .resource-heading {
+    font-size: 30px;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 6px;
+}
+
+.resource-booking .resource-headingsecond {
+    font-size: 24px;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 6px;
+}
+
+.resource-booking p {
+    color: #6b7280;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+/* =====================================================
+   TABLE
+===================================================== */
+
+.resource-booking .resource-tablefirst,
+.resource-booking .resource-table-approved {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 900px;
+    margin-top: 18px;
+}
+
+/* TABLE HEAD */
+.resource-booking .resource-tablefirst th,
+.resource-booking .resource-table-approved th {
+    background: #f9fafb;
+    padding: 16px;
+    text-align: left;
+    font-size: 14px;
+    font-weight: 600;
+    color: #374151;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+/* TABLE BODY */
+.resource-booking .resource-tablefirst td,
+.resource-booking .resource-table-approved td {
+    padding: 18px 16px;
+    font-size: 14px;
+    color: #4b5563;
+    border-bottom: 1px solid #f3f4f6;
+}
+
+/* REMOVE VERTICAL LINES */
+.resource-booking .resource-tablefirst th,
+.resource-booking .resource-tablefirst td,
+.resource-booking .resource-table-approved th,
+.resource-booking .resource-table-approved td {
+    border-left: none !important;
+    border-right: none !important;
+}
+
+/* ROW HOVER */
+.resource-booking .resource-tablefirst tr:hover,
+.resource-booking .resource-table-approved tr:hover {
+    background: #fafafa;
+}
+
+/* =====================================================
+   STATUS
+===================================================== */
+
+.resource-booking .status {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 7px 14px;
+    border-radius: 30px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: capitalize;
+}
+
+.resource-booking .status.pending {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.resource-booking .status.approved {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.resource-booking .status.denied {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+/* =====================================================
+   ACTION BUTTONS
+===================================================== */
+
+.resource-booking .btn-approve,
+.resource-booking .btn-deny {
+    width: 38px;
+    height: 38px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: 0.3s ease;
+    margin-right: 8px;
+}
+
+/* APPROVE */
+.resource-booking .btn-approve {
+    background: #dcfce7;
+    color: #16a34a;
+}
+
+.resource-booking .btn-approve:hover {
+    background: #16a34a;
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* DENY */
+.resource-booking .btn-deny {
+    background: #fee2e2;
+    color: #dc2626;
+}
+
+.resource-booking .btn-deny:hover {
+    background: #dc2626;
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 768px) {
+
+    .resource-booking .main-booking,
+    .resource-booking .main-approved {
+        padding: 18px;
+    }
+
+    .resource-booking .resource-heading {
+        font-size: 24px;
+    }
+
+    .resource-booking .resource-headingsecond {
+        font-size: 20px;
+    }
+
+    .resource-booking .resource-tablefirst th,
+    .resource-booking .resource-tablefirst td,
+    .resource-booking .resource-table-approved th,
+    .resource-booking .resource-table-approved td {
+        padding: 14px;
+        font-size: 13px;
+    }
+
+    .resource-booking .btn-approve,
+    .resource-booking .btn-deny {
+        width: 34px;
+        height: 34px;
+    }
+}

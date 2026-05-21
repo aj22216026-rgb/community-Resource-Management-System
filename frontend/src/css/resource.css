@@ -1,0 +1,332 @@
+/* =====================================================
+   GLOBAL RESET
+===================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: #f3f4f6;
+    color: #111827;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* =====================================================
+   RESOURCE PAGE
+===================================================== */
+
+.resource-page {
+    width: 100%;
+}
+
+/* HEADER */
+.resource-header-top {
+    margin-bottom: 28px;
+    margin-left: 250px;
+}
+
+.resource-heading {
+    font-size: 30px;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 6px;
+}
+
+.resource-sub {
+    color: #6b7280;
+    font-size: 15px;
+}
+
+/* =====================================================
+   ACTION BAR
+===================================================== */
+
+.resource-header {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-top: 22px;
+}
+
+/* =====================================================
+   BUTTONS
+===================================================== */
+
+.back-nav,
+.back-dashboardl {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 18px;
+    border-radius: 14px;
+    font-size: 14px;
+    font-weight: 600;
+    transition: 0.3s ease;
+    text-decoration: none;
+}
+
+/* BACK BUTTON */
+.back-nav {
+    background: white;
+    border: 1px solid #e5e7eb;
+    color: #111827;
+}
+
+.back-nav:hover {
+    background: #f3f4f6;
+}
+
+/* ADD RESOURCE BUTTON */
+.back-dashboardl {
+    background: #10a37f;
+    color: white;
+    margin-left: auto;
+}
+
+.back-dashboardl:hover {
+    background: #0d8c6d;
+}
+
+/* =====================================================
+   TABLE CONTAINER
+===================================================== */
+
+.main-content {
+    background: white;
+    border-radius: 24px;
+    border: 1px solid #e5e7eb;
+    padding: 25px;
+    overflow-x: auto;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+    
+}
+
+/* =====================================================
+   SUMMARY
+===================================================== */
+
+.resource-summary {
+    margin-bottom: 20px;
+}
+
+.resource-summary h4 {
+    font-size: 22px;
+    margin-bottom: 6px;
+}
+
+.resource-summary p {
+    color: #6b7280;
+}
+
+/* =====================================================
+   TABLE
+===================================================== */
+
+.resource-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 700px;
+  
+}
+
+/* HEAD */
+.resource-table th {
+    background: #f9fafb;
+    padding: 10px;
+    text-align: left;
+    color: #374151;
+    font-size: 14px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+/* BODY */
+.resource-table td {
+    padding: 12px 10px;
+    border-bottom: 1px solid #f3f4f6;
+    font-size: 14px;
+    color: #4b5563;
+}
+
+/* REMOVE VERTICAL LINES */
+.resource-table th,
+.resource-table td {
+    border-left: none !important;
+    border-right: none !important;
+}
+
+/* ROW HOVER */
+.resource-table tr:hover {
+    background: #fafafa;
+}
+
+/* =====================================================
+   IMAGE
+===================================================== */
+
+.resource-image {
+    width: 55px;
+    height: 55px;
+    border-radius: 14px;
+    object-fit: cover;
+}
+
+/* =====================================================
+   STATUS
+===================================================== */
+
+.status {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 7px 14px;
+    border-radius: 30px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.available {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.booked {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.maintenance {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+/* =====================================================
+   ACTION BUTTONS
+===================================================== */
+
+.btn-edit,
+.btn-delete {
+    width: 38px;
+    height: 38px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: 0.3s ease;
+    margin-right: 8px;
+}
+
+/* EDIT */
+.btn-edit {
+    background: #dbeafe;
+    color: #2563eb;
+}
+
+.btn-edit:hover {
+    background: #2563eb;
+    color: white;
+}
+
+/* DELETE */
+.btn-delete {
+    background: #fee2e2;
+    color: #dc2626;
+}
+
+.btn-delete:hover {
+    background: #dc2626;
+    color: white;
+}
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 768px) {
+
+    .resource-header {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 14px;
+    }
+
+    .back-nav,
+    .back-dashboardl {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .back-dashboardl {
+        margin-left: 0;
+    }
+
+    .main-content {
+        padding: 18px;
+    }
+
+    .resource-table th,
+    .resource-table td {
+        padding: 14px;
+        font-size: 13px;
+    }
+
+    .resource-image {
+        width: 45px;
+        height: 45px;
+    }
+
+    .btn-edit,
+    .btn-delete {
+        width: 34px;
+        height: 34px;
+    }
+}
+
+.resource-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.75);
+
+  display: flex;
+  justify-content: center;   /* centers horizontally */
+  align-items: center;       /* centers vertically */
+
+  z-index: 9999;
+  padding: 20px;
+}
+.resource-modal-card {
+  width: 90%;
+  max-width: 1000px;
+  max-height: 90vh;
+
+
+  border-radius: 20px;
+  animation: popup .3s ease;
+}
+
+@keyframes popup {
+  from {
+    transform: scale(.92);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

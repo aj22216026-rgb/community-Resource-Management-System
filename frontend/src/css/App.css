@@ -1,0 +1,35 @@
+body{
+    background: transparent;
+    /* background-color: blue; */
+}
+.bg{
+    background-image:url('../src/assets/resource.png');
+    background-size:cover;
+    background-repeat: no-repeat;
+
+} 
+span{
+    color: brown;
+}  
+:root {
+  /* COLORS */
+  --primary: #2563eb;
+  --secondary: #4f46e5;
+  --bg: #f5f7fb;
+  --card-bg: #ffffff;
+  --text-main: #1e293b;
+  --text-light: #64748b;
+
+  /* SHADOW */
+  --shadow: 0 8px 20px rgba(0,0,0,0.08);
+
+  /* RADIUS */
+  --radius: 12px;
+}
+
+/* GLOBAL RESET */
+body {
+  background: var(--bg);
+  color: var(--text-main);
+  font-family: 'Segoe UI', sans-serif;
+}

@@ -1,0 +1,304 @@
+
+
+/* =====================================================
+   FORM CARD
+===================================================== */
+
+.resource-form {
+    width: 50%;
+    max-width: 500px;
+
+    background: rgba(255,255,255,0.96);
+    backdrop-filter: blur(12px);
+
+    border: 1px solid #e5e7eb;
+    border-radius: 28px;
+
+    padding: 30px;
+
+    box-shadow:
+        0 10px 40px rgba(0,0,0,0.08),
+        0 2px 10px rgba(0,0,0,0.03);
+
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    animation: fadeIn 0.35s ease;
+}
+
+/* =====================================================
+   CLOSE BUTTON
+===================================================== */
+
+.close-form-btn {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+
+    width: 42px;
+    height: 42px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: #f3f4f6;
+    color: #374151;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.close-form-btn:hover {
+    background: #ef4444;
+    color: white;
+    transform: rotate(90deg) scale(1.05);
+}
+
+/* =====================================================
+   HEADINGS
+===================================================== */
+
+.resource-form h2 {
+    font-size: 30px;
+    font-weight: 700;
+    color: #111827;
+}
+
+.resource-form p {
+    color: #6b7280;
+    font-size: 15px;
+    margin-top: -10px;
+}
+
+/* =====================================================
+   GRID
+===================================================== */
+
+.arrage {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+/* =====================================================
+   FORM GROUP
+===================================================== */
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.form-group label {
+    font-size: 14px;
+    font-weight: 400;
+    color: #374151;
+}
+
+/* =====================================================
+   INPUTS
+===================================================== */
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+
+    padding: 10px 12px;
+
+    border-radius: 12px;
+    border: 1px solid #d1d5db;
+
+    background: #ffffff;
+
+    font-size: 14px;
+    color: #111827;
+
+    transition: all 0.3s ease;
+
+    outline: none;
+}
+
+/* FOCUS */
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: #10a37f;
+    box-shadow: 0 0 0 4px rgba(16,163,127,0.12);
+}
+
+/* TEXTAREA */
+.form-group textarea {
+    min-height: 90px;
+    resize: none;
+}
+
+/* FILE INPUT */
+.form-group input[type="file"] {
+    padding: 12px;
+    background: #f9fafb;
+    cursor: pointer;
+}
+
+/* =====================================================
+   BUTTON GROUP
+===================================================== */
+
+.button-group {
+    display: flex;
+    justify-content: flex-end;
+    gap: 14px;
+    margin-top: 10px;
+}
+
+/* =====================================================
+   CANCEL BUTTON
+===================================================== */
+
+.resource-button-cancel {
+    padding: 13px 24px;
+
+    border-radius: 14px;
+    border: 1px solid #d1d5db;
+
+    background: white;
+    color: #374151;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.resource-button-cancel:hover {
+    background: #f3f4f6;
+    transform: translateY(-2px);
+}
+
+/* =====================================================
+   SUBMIT BUTTON
+===================================================== */
+
+.resource-button {
+    padding: 13px 24px;
+
+    border: none;
+    border-radius: 14px;
+
+    background: linear-gradient(135deg, #10a37f, #0d8c6d);
+    color: white;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: all 0.3s ease;
+}
+
+.resource-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px rgba(16,163,127,0.2);
+}
+
+/* =====================================================
+   SUCCESS MESSAGE
+===================================================== */
+
+.success-message {
+    padding: 14px 18px;
+    border-radius: 14px;
+
+    background: #dcfce7;
+    color: #166534;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    border: 1px solid #bbf7d0;
+}
+
+/* ERROR MESSAGE */
+.error-message {
+    padding: 14px 18px;
+    border-radius: 14px;
+
+    background: #fee2e2;
+    color: #991b1b;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    border: 1px solid #fecaca;
+}
+
+/* =====================================================
+   ANIMATION
+===================================================== */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 768px) {
+
+    .resource-container {
+        padding: 20px;
+    }
+
+    .resource-form {
+        padding: 24px;
+        border-radius: 22px;
+    }
+
+    .arrage {
+        grid-template-columns: 1fr;
+    }
+
+    .button-group {
+        flex-direction: column;
+    }
+
+    .resource-button,
+    .resource-button-cancel {
+        width: 100%;
+    }
+
+    .resource-form h2 {
+        font-size: 24px;
+    }
+}/* FULL SCREEN OVERLAY CENTER FIX */
+.resource-overlay {
+    position: fixed;
+    inset: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+ 
+    backdrop-filter: blur(6px);
+
+    z-index: 9999;
+    padding: 20px;
+}

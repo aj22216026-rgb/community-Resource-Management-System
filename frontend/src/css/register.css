@@ -1,0 +1,222 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+/* PAGE BACKGROUND */
+.page-bg {
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at top, #1e293b, #0f172a);
+  padding: 20px;
+}
+
+/* CARD */
+.card-container {
+  width: 100%;
+  max-width: 900px;
+  display: flex;
+  border-radius: 20px;
+  overflow: hidden;
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(15px);
+  box-shadow: 0 25px 60px rgba(0,0,0,0.4);
+}
+
+
+
+
+
+
+.register-container {
+  flex: 1;
+  background: #0b1220;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  height: 70vh;
+}
+
+/* FORM */
+.login-form {
+  width: 100%;
+  max-width: 360px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  color: white;
+}
+
+/* HEADINGS */
+.login-form h2 {
+  font-size: 26px;
+  text-align: center;
+}
+
+.sub-text {
+  text-align: center;
+  color: #94a3b8;
+  font-size: 13px;
+  margin-bottom: 10px;
+}
+
+/* LABEL */
+.login-form label {
+  font-size: 13px;
+  color: #cbd5e1;
+}
+
+/* INPUT */
+.login-form input {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid #1f2937;
+  background: #111827;
+  color: white;
+  outline: none;
+  transition: 0.3s;
+}
+
+.login-form input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37,99,235,0.2);
+}
+
+/* INPUT GROUP (password eye) */
+.input-group {
+  position: relative;
+}
+
+.eye {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #94a3b8;
+}
+
+/* BUTTON */
+.login-btn {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.login-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(37,99,235,0.3);
+}
+
+/* GOOGLE BUTTON */
+.google-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  width: 100%;
+  padding: 12px;
+
+  border-radius: 10px;
+  border: 1px solid #334155;
+
+  background: #0f172a;
+  color: white;
+
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.google-btn:hover {
+  background: #111827;
+  transform: translateY(-2px);
+}
+
+.google-btn img {
+  width: 18px;
+}
+
+/* ERROR */
+.error-top {
+  color:red;
+  font-size: 12px;
+}
+
+.error2 {
+  background: rgba(239,68,68,0.15);
+  padding: 10px;
+  border-radius: 8px;
+  color: #f87171;
+  font-size: 13px;
+}
+
+/* LINK */
+.create {
+  text-align: center;
+  font-size: 13px;
+  color: #94a3b8;
+  text-decoration: none;
+  margin-top: 5px;
+}
+
+.create strong {
+  color: #3b82f6;
+}
+
+/* PROFILE UPLOAD (REGISTER) */
+.profile-upload {
+  display: flex;
+  justify-content: center;
+}
+
+.avatar-wrapper {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 2px dashed #334155;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.avatar-placeholder {
+  font-size: 28px;
+  color: #64748b;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .card-container {
+    flex-direction: column;
+  }
+
+  .login-left {
+    display: none;
+  }
+
+  .login-right {
+    padding: 25px;
+  }
+}

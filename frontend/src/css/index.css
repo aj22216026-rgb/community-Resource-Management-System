@@ -1,0 +1,206 @@
+
+/* a{
+  text-decoration: none;
+}
+
+*{
+    padding: 0;
+    margin: 0;
+ box-sizing: border-box; 
+}
+
+.welcome-b{
+    margin-right:auto;
+}
+.dashboard2{
+    background-color: #f2f2f7;
+    height:100vh;
+    
+}
+.resource-title{
+      background: #f2f2f7;
+    color: rgb(1, 1, 1);
+    width: 100%;
+    padding: 10px;
+    /* margin-top: 60px; 
+}
+
+.sub-heading {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+}
+
+.logout {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    padding: 2px 4px;
+    cursor:pointer;
+
+}
+
+.btn-logout:hover{
+    background-color:#efc5c5;
+}
+.nav:hover {
+    background-color: #d8d3d3;
+}
+.profile-img:hover {
+    background-color: #efc5c5;
+}
+
+ .nav{
+    margin-top:10px;
+  border-radius:10px;
+  color: rgb(28, 27, 27);
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  border: 1px;
+  background-color: white;
+ 
+} 
+
+.btn-logout {
+  
+    border-radius: 15px;
+    border: none;
+   background-color: #f2f2f2;
+    color: rgb(0, 0, 0);
+    padding: 0.6rem;
+    font-size:larger;
+    cursor:pointer;
+}
+
+.profile-img{
+    width: 40px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+
+
+.main-content{
+    padding: 20px;
+    font-family: "sarifs";
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 2px;
+    
+    border: 0px solid rgba(0, 0, 0, 0.0) ;
+
+}
+.wel{
+    padding:16px;
+    margin-left:10px;
+}
+
+
+ .card {
+    margin-top:80px;
+    width: 270px;
+    padding: 5px;
+    border: 0.8px solid rgba(90, 88, 88, 0);
+     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); 
+    border-radius: 20px;
+    background-color: #ffffff;;
+    display: flex;
+    flex-direction: column; 
+    justify-content: center;
+    align-items: left;
+    gap: 10px;
+    cursor:pointer;
+}
+
+.main-card{
+    display: flex;
+    gap: 20px;
+    margin: 10px;
+}
+
+.tractor-icon{
+    width: 40%;
+    height: 50px;
+    padding: 10px;
+    object-fit: cover;
+    background-color: rgb(158, 209, 158);
+    border-radius: 10px;
+
+}
+.car-icon{
+    width: 40%;
+    height: 50px;
+    padding: 10px;
+    object-fit: cover;
+    background-color: rgb(162, 211, 238);
+    border-radius: 10px;
+
+}
+.tree-branch-icon{
+    width: 40%;
+    height: 50px;
+    padding: 10px;
+    background-color: rgb(228, 123, 123);
+    border-radius: 10px;
+    object-fit:cover;
+
+}
+.soccer-field-icon{
+    width: 40%;
+    height: 50px;
+    padding: 10px;
+    object-fit: cover;
+    background-color: rgba(110, 162, 121, 0.145);
+    border-radius: 10px;
+    
+}
+.farm-icon{
+    width: 40%;
+    height: 50px;
+    padding: 10px;
+    object-fit: cover;
+    background-color: rgba(197, 244, 69, 0.145);
+    border-radius: 10px;
+    
+}
+
+.-icon{
+    width: 40%;
+    height: 50px;
+    padding: 10px;
+    background-color: rgb(119, 99, 99);
+    border-radius: 10px;
+    object-fit:cover;
+
+}
+ 
+.summary-container {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+}
+
+.cards {
+    margin-top:100px;
+  width: 440px;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.title {
+  color: gray;
+  font-size: 14px;
+}
+
+.main-card .card{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* height: 100vh; 
+}*/
