@@ -69,7 +69,7 @@ function Resource() {
                         <tr key={resource.id}>
                             <td>
                                 <div className="resource-info">
-                                    <img src={`http://localhost:5000/upload/${resource.image}`} alt={resource.name} className="resource-image" />
+                                    <img src={`http://localhost:5000/upload/resource-image/${resource.image}`} alt={resource.name} className="resource-image" />
                                     
                                 </div>
                             </td>

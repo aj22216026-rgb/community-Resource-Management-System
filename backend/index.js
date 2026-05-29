@@ -1,7 +1,6 @@
-
 import express from 'express';
-// import cors from 'cors';
-// import {createUserTable } from './models/user.model.js';
+import path from 'path';
+import { fileURLToPath } from 'url';
 import { createUsersTable } from './models/userModel.js';
 import { createResourceTable } from './models/resourceModel.js';
 import cors from 'cors';
@@ -18,10 +17,17 @@ const app=express();
 // await createUsersTable();
 // await createResourceTable();
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+app.use('/upload', express.static(path.join(__dirname, 'upload')));
 app.use(express.json())
-app.use(express.urlencoded({ extended: true }));
-app.use('/upload', express.static('upload/resource-image')); // Serve static files from the "uploads" directory  
-app.use(cors());
+app.use(express.urlencoded({ extended: true }));  
+app.use(cors({
+    origin: 'http://localhost:5173',
+    credentials: true
+}));
+
 app.use("/users", userRouter);
 app.use("/resources", resourceRouter);
 app.use("/payments", paymentRouter);

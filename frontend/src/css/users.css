@@ -1,0 +1,70 @@
+.users-page {
+    padding: 30px;
+    margin-left: 250px;
+    min-height: 100vh;
+    background: #f8fafc;
+}
+
+.users-header h1 {
+    font-size: 28px;
+    color: #0f172a;
+}
+
+.users-header p {
+    color: #64748b;
+    margin-top: 5px;
+}
+
+.table-wrapper {
+    margin-top: 25px;
+    background: white;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+}
+
+.users-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.users-table thead {
+    background: #0f172a;
+    color: white;
+}
+
+.users-table th,
+.users-table td {
+    padding: 18px;
+    text-align: left;
+}
+
+.users-table tbody tr {
+    border-bottom: 1px solid #e2e8f0;
+    transition: 0.3s;
+}
+
+.users-table tbody tr:hover {
+    background: #f1f5f9;
+}
+
+.role-select {
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid #cbd5e1;
+    cursor: pointer;
+}
+
+.delete-btn {
+    background: #ef4444;
+    color: white;
+    border: none;
+    padding: 10px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.delete-btn:hover {
+    background: #dc2626;
+}

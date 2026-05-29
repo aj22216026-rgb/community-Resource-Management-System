@@ -8,6 +8,7 @@ export const createUsersTable= async () => {
         email VARCHAR(255) NOT NULL UNIQUE,
         tell VARCHAR(20) NOT NULL,
         password VARCHAR(255) NOT NULL,
+        profile_pic VARCHAR(500) NULL,
         role ENUM('user','admin') DEFAULT 'user',
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
       )

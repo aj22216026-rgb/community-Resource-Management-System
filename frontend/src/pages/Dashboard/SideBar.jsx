@@ -14,6 +14,7 @@ function SideBar() {
         { name: "Resources", path: "/dashboard/resources", icon: <FiFolder /> },
         { name: "Bookings", path: "/dashboard/manage-bookings", icon: <FiCalendar /> },
         { name: "Users", path: "/dashboard/users", icon: <FiUser /> },
+        
         { name: "Analytics", path: "/dashboard/analytics", icon: <FiUser /> },
     ];
     const userLink=[
@@ -41,11 +42,11 @@ useEffect(()=>{
 
             {/* HEADER */}
             <div className="sidebar-header">
-                Resource App
+                CRMS
             </div>
 
             {/* NAVIGATION */}
-            <nav className="nav-linksa">
+            <nav className="nav-linksp">
                 {menuItems.map((link) => (
                     <NavLink key={link.path} to={link.path} className={({isActive})=>isActive?"isActive items-nav":"items-nav"}>
                         {link.icon}

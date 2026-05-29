@@ -3,6 +3,7 @@ import  db  from '../config/db.js';
 import bcrypt from 'bcrypt';
 import e from 'express';
 import jwt from 'jsonwebtoken';
+import multer from '../config/multer.js';
 
 
 
@@ -21,10 +22,21 @@ if (!username || !email || !password || !tell) {
             return res.status(409).json({ message: "Email already exists" });
         }   
         const hashPassword = await bcrypt.hash(password, 10);
+        
+        const profile_pic = req.file ? `/upload/profiles/${req.file.filename}` : null;
+
         const [result] = await db.query(
-            "INSERT INTO users (username, email, tell, password) VALUES (?, ?, ?, ?)",
-            [username, normalizedEmail, tell, hashPassword]
+            "INSERT INTO users (username, email, tell, password, profile_pic) VALUES (?, ?, ?, ?, ?)",
+            [
+         username,
+  normalizedEmail,
+  tell,
+  hashPassword,
+  profile_pic
+]
         );
+
+
         return res.status(201).json({
             message: "Account created successfully",
             result: { insertId: result.insertId }
@@ -66,24 +78,87 @@ export const loginUser = async (req, res) => {
     }
 }
 export const getAllUsers = async (req, res) => {
-    try {
-        const [users] = await db.query("SELECT id, username, email, tel, role FROM users");   
-        return res.status(200).json(users);
-    } catch (error) {
-        console.error("Error fetching users:", error);
-        return res.status(500).json({ message: "Internal server error" });
-    }   
-}
+  try {
+
+    const [users] = await db.query(`
+      SELECT id, username, email, tell, role, profile_pic, created_at
+       FROM users
+    `);
+
+    return res.status(200).json( users);
+
+  } catch (error) {
+
+    console.error(error);
+
+    return res.status(500).json({
+      message: "Internal server error"
+    });
+
+  }
+};
+
 export const getUserInfo = async (req, res) => {
-    const userId = req.user.id;
-    try {
-        const [user] = await db.query("SELECT id, username, email, role FROM users WHERE id=?", [userId]); 
-        if (user.length === 0) {
-            return res.status(404).json({ message: "User not found" });
-        }
-        return res.status(200).json(user[0]);
-    } catch (error) {
-        console.error("Error fetching user info:", error);
-        return res.status(500).json({ message: "Internal server error" });
+
+  const userId = req.user.id;
+
+  try {
+
+    const [user] = await db.query(`
+      SELECT
+        id,
+        username,
+        email,
+        tell,
+        role,
+        profile_pic
+      FROM users
+      WHERE id=?
+    `,[userId]);
+
+    if(user.length === 0){
+      return res.status(404).json({
+        message:"User not found"
+      });
     }
-}
+
+    return res.status(200).json(user[0]);
+
+  } catch(error){
+
+    console.error(error);
+
+    return res.status(500).json({
+      message:"Internal server error"
+    });
+
+  }
+};
+export const updateUserRole = async (req, res) => {
+
+  const userId = req.params.id;
+  const { role } = req.body;
+  try {
+    const [result] = await db.query("UPDATE users SET role=? WHERE id=?", [role, userId]);
+    if (result.affectedRows === 0) {
+      return res.status(404).json({ message: "User not found" });
+    }
+    return res.status(200).json({ message: "User role updated successfully" });
+  } catch (error) {
+    console.error("Error updating user role:", error);
+    return res.status(500).json({ message: "Internal server error" });
+  }
+};
+export const deleteUser = async (req, res) => {
+  const userId = req.params.id;
+  try {
+    const [result] = await db.query("DELETE FROM users WHERE id=?", [userId]);
+    if (result.affectedRows === 0) {
+      return res.status(404).json({ message: "User not found" });
+    }
+    return res.status(200).json({ message: "User deleted successfully" });
+  } catch (error) {
+    console.error("Error deleting user:", error);
+    return res.status(500).json({ message: "Internal server error" });
+  }
+};

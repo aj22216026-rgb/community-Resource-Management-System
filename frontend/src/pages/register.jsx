@@ -12,13 +12,31 @@ function Register() {
     password: "",
     confirmPassword: "",
     tell: "",
-    Image: null
+    profile_pic: null
   })
+
+  const [file, setFile] = useState(null);
+  const [preview, setPreview] = useState(null);
 
   const [errors, setErrors] = useState({})
   const [serverError, setServerError] = useState("")
   const [loading, setLoading] = useState(false)
   const [showPassword, setShowPassword] = useState(false)
+
+ const handleFileChanges = (e) => {
+  const selected = e.target.files[0];
+
+  if (!selected) return;
+
+  setFile(selected);
+
+  setData({
+    ...data,
+    profile_pic: selected
+  });
+
+  setPreview(URL.createObjectURL(selected));
+};
 
   const handleChanges = (e) => {
     const { name, value, files } = e.target
@@ -39,44 +57,70 @@ function Register() {
   }
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
+  e.preventDefault();
 
-    const newErrors = {
-      username: formValidation("username", data.username, data),
-      email: formValidation("email", data.email, data),
-      password: formValidation("password", data.password, data),
-      confirmPassword: formValidation("confirmPassword", data.confirmPassword, data),
-      tell: formValidation("tell", data.tell, data),
-      Image: formValidation("Image", data.Image, data)
+  const newErrors = {
+    username: formValidation("username", data.username, data),
+    email: formValidation("email", data.email, data),
+    password: formValidation("password", data.password, data),
+    confirmPassword: formValidation("confirmPassword", data.confirmPassword, data),
+    tell: formValidation("tell", data.tell, data),
+  };
+
+  setErrors(newErrors);
+
+  if (Object.values(newErrors).some(err => err)) return;
+
+  try {
+    setLoading(true);
+    setServerError("");
+
+    const formData = new FormData();
+
+    formData.append("username", data.username);
+    formData.append("email", data.email);
+    formData.append("password", data.password);
+    formData.append("tell", data.tell);
+
+    if (file) {
+      formData.append("profile_pic", file);
     }
 
-    setErrors(newErrors)
-
-    if (Object.values(newErrors).some(err => err)) return
-
-    try {
-      setLoading(true)
-      setServerError("")
-
-      const formData = new FormData()
-      Object.keys(data).forEach(key => {
-        formData.append(key, data[key])
-      })
-
-      await axios.post('http://localhost:5000/users/create', formData, {
+    await axios.post(
+      "http://localhost:5000/users/create",
+      formData,
+      {
         headers: {
-          "Content-Type": "multipart/form-data"
-        }
-      })
+          "Content-Type": "multipart/form-data",
+        },
+      }
+    );
 
-      alert("Account created successfully!")
+    alert("Account created successfully!");
 
-    } catch (error) {
-      setServerError(error.response?.data?.message || "Registration failed")
-    } finally {
-      setLoading(false)
-    }
+    setData({
+      username: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
+      tell: "",
+      profile_pic: null,
+    });
+
+    setPreview(null);
+    setFile(null);
+
+  } catch (error) {
+    setServerError(
+      error.response?.data?.message || "Registration failed"
+    );
+
+    console.error("Registration error:", error);
+
+  } finally {
+    setLoading(false);
   }
+};
 
   return (
  
@@ -169,9 +213,9 @@ function Register() {
             <label>Profile Picture</label>
             <div className="profile-upload">
               <label className="avatar-wrapper">
-                {data.Image ? (
+                {preview ? (
                   <img
-                    src={URL.createObjectURL(data.Image)}
+                    src={preview}
                     alt="preview"
                     className="avatar-img"
                   />
@@ -181,9 +225,9 @@ function Register() {
 
                 <input
                   type="file"
-                  name="Image"
+                  name="profile_pic"
                   accept="image/*"
-                  onChange={handleChanges}
+                  onChange={handleFileChanges}
                   hidden
                 />
               </label>

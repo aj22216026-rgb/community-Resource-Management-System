@@ -1,11 +1,12 @@
 import express from 'express';
-import { createUser, loginUser,getAllUsers,getUserInfo} from '../controllers/user.controller.js';
+import { createUser, loginUser,getAllUsers,getUserInfo,deleteUser,updateUserRole} from '../controllers/user.controller.js';
 import { verifyToken } from '../middleware/verifyToken.js';
+import multer from '../config/multer.js';
 
 const router=express.Router();
 
 // http://localhost:3000/users/create
-router.post('/create', createUser);
+router.post('/create', multer.single('profile_pic'), createUser);
 
 // http://localhost:5000/users/login
 router.post('/login', loginUser);
@@ -15,5 +16,11 @@ router.get('/get_users', getAllUsers);
 
 // http://localhost:5000/users/profile
 router.get('/profile', verifyToken, getUserInfo);
+
+// http://localhost:5000/users/update_role/:id
+router.put('/update_role/:id', verifyToken, updateUserRole);
+
+// http://localhost:5000/users/delete_user/:id
+router.delete('/delete_user/:id', verifyToken, deleteUser);
 
 export { router as userRouter };

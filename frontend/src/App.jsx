@@ -16,6 +16,7 @@ import ResourceDetail from './pages/ResourceDetail'
 // import PaymentForm from './pages/PaymentForm'
 import UserPayment from './pages/userPayment'
 
+import Users from "./pages/Dashboard/Users";
 
 
 function App() { 
@@ -39,6 +40,8 @@ function App() {
             <Route path="resource-card" element={<ResourceCard />} /> 
             <Route path="resource-detail/:type" element={<ResourceDetail />} /> 
             <Route path="user-payments" element={<UserPayment />} /> 
+
+            <Route path="users" element={<Users />} />
 
             
             

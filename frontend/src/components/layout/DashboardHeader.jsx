@@ -13,7 +13,7 @@ const DashboardHeader = () => {
         localStorage.removeItem("token");
         localStorage.removeItem("user");
         setUser(null);
-        window.location.href = "/login";
+        window.location.href = "/";
     };
 
     return (
@@ -26,14 +26,14 @@ const DashboardHeader = () => {
                    <div className="logout">
                      
            
-                     <img src={profileImg} alt="profile" className="profile-img" />
+                     <img src={user?.profile_pic || profileImg} alt="profile" className="profile-img" />
                      <div className="user-detail">
                      <p>{user?.username} </p>
                      <span>{user?.role}</span>
                      </div>
            
                      <Link onClick={logout}>
-                       <span className="nav logout-btn">
+                       <span className="logout-btn">
                          <FiLogOut /> Logout
                        </span>
                      </Link>
