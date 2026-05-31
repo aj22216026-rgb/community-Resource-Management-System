@@ -3,7 +3,7 @@
 import db from '../config/db.js';
 
 export const createPaymentTable=async()=>{
-    const query=`CREATE TABLE payments (
+    const query=`CREATE TABLE IF NOT EXISTS payments (
      id INT PRIMARY KEY AUTO_INCREMENT,
 
     user_id INT NOT NULL,
