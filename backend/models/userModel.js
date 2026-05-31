@@ -13,11 +13,11 @@ export const createUsersTable= async () => {
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
       )
     `;
-    db.query(query, (err, result) => {
-        if (err) {
-            console.error("Error creating users table:", err);
-        } else {
-            console.log("Users table created successfully");
-        }
-    });
+    try {
+        await db.query(query);
+        console.log("Users table created successfully");
+    } catch (error) {
+        console.error("Error creating users table:", error);
+    }
+    
 };

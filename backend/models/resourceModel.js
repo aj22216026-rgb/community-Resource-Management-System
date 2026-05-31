@@ -14,11 +14,10 @@ export const createResourceTable=async()=>{
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );`;
-    db.query(query, (err, result) => {
-        if (err) {
-            console.error("Error creating resources table:", err);
-        } else {
-            console.log("Resources table created successfully");
-        }
-    });
+    try {
+    await db.query(query);
+    console.log("Resource table created successfully");
+   } catch (error) {
+    console.error("Error creating resource table:", error);
+   }
 }

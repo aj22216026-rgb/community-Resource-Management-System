@@ -2,8 +2,8 @@
 // import db from '../config/db.js';
 import db from '../config/db.js';
 
-export const createResourceTable=async()=>{
-    const query=`CREATE TABLE resources (
+export const createPaymentTable=async()=>{
+    const query=`CREATE TABLE payments (
      id INT PRIMARY KEY AUTO_INCREMENT,
 
     user_id INT NOT NULL,
@@ -38,11 +38,10 @@ export const createResourceTable=async()=>{
         ON DELETE CASCADE
         ON UPDATE CASCADE
 );`;
-    db.query(query, (err, result) => {
-        if (err) {
-            console.error("Error creating resources table:", err);
-        } else {
-            console.log("Resources table created successfully");
-        }
-    });
+   try {
+    await db.query(query);
+    console.log("Payment table created successfully");
+   } catch (error) {
+    console.error("Error creating payment table:", error);
+   }
 }

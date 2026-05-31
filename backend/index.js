@@ -6,6 +6,7 @@ import { createResourceTable } from './models/resourceModel.js';
 import cors from 'cors';
 import { userRouter } from './routers/user.route.js';
 import { resourceRouter } from './routers/resources.js';
+import { createPaymentTable } from './models/paymentModel.js';
 
 import dotenv from 'dotenv';
 import { paymentRouter } from './routers/payment.route.js';
@@ -14,8 +15,9 @@ dotenv.config();
 
 const app=express();
 
-// await createUsersTable();
-// await createResourceTable();
+await createUsersTable();
+await createResourceTable();
+await createPaymentTable();
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
