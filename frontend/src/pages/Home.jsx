@@ -19,7 +19,7 @@ function Home() {
 
         <ul className="nav-linksa">
           <li><a href="#">Home</a></li>
-          <li><a href="#">About</a></li>
+          <li><Link to="/about"> About</Link></li>
           <li><Link to="/contact">Contact</Link></li>
         </ul>
 
@@ -88,7 +88,7 @@ function Home() {
 
       {/* FOOTER */}
       <footer className="footer">
-        © 2026 CRMS | Community Site
+        © 2026 CRMS | Community Resource Management System
       </footer>
 
       {/* ================= MODALS ================= */}
@@ -102,9 +102,13 @@ function Home() {
               ✕
             </button>
 
-            <Login
-              onSuccess={() => setShowLogin(false)}
-            />
+           <Login
+  onSuccess={() => setShowLogin(false)}
+  openRegister={() => {
+    setShowLogin(false);
+    setShowRegister(true);
+  }}
+/>
 
           </div>
         </div>
@@ -119,9 +123,13 @@ function Home() {
               ✕
             </button>
 
-            <Register
-              onSuccess={() => setShowRegister(false)}
-            />
+           <Register
+  onSuccess={() => setShowRegister(false)}
+  openLogin={() => {
+    setShowRegister(false);
+    setShowLogin(true);
+  }}
+/>
 
           </div>
         </div>

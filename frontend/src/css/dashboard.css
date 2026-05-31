@@ -227,4 +227,16 @@ a {
 /* popup effect */
 .card:hover .card-icon svg {
   transform: scale(1.18);
+}.mock-card {
+    opacity: 0.85;
+    cursor: default;
+}
+
+.mock-card .card-icon {
+    font-size: 50px;
+}
+
+.mock-card .stats {
+    color: #64748b;
+    font-style: italic;
 }

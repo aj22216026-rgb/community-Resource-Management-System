@@ -4,7 +4,8 @@ import { formValidation } from '../helpers/validation'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 
-function Register() {
+function Register({ openLogin }) {
+
 
   const [data, setData] = useState({
     username: "",
@@ -124,12 +125,8 @@ function Register() {
 
   return (
  
-
-      
-
-     
         
-          <form onSubmit={handleSubmit} className="login-form">
+          <form onSubmit={handleSubmit} className="login-formr">
 
             <h2>Create Account</h2>
             <p className="sub-text">Start your journey</p>
@@ -237,9 +234,13 @@ function Register() {
               {loading ? "Creating..." : "Register"}
             </button>
 
-            <Link to="/" className="create">
-              Already have an account? <strong>Login</strong>
-            </Link>
+        <p
+  className="create"
+  onClick={openLogin}
+  style={{ cursor: "pointer" }}
+>
+  Already have an account? <strong>Login</strong>
+</p>
 
           </form>
      

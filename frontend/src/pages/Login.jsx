@@ -5,7 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useAuth } from '../context/AuthContext';
 
-function Login() {
+function Login({ openRegister }) {
   const navigate = useNavigate();
   const { setUser,user } = useAuth();
   console.log("User:", user);
@@ -79,29 +79,6 @@ function Login() {
     }
   };
 
-  //return (
-    // <div className="login-container">
-
-    //   {/* LEFT SIDE */}
-    //   <div className="login-left">
-   
-
-    //   </div> //     
-    //    <p>
-    //       Book and manage shared resources like football fields,
-    //       tractors, farms and vehicles  all in one system.
-    //     </p>
-    //       <div className="features">
-    //       <p>⚽ Football Fields</p>
-    //       <p>🚜 Tractors</p>
-    //       <p>🌾 Farms</p>
-    //       <p>🚗 Vehicles</p>
-          
-    //     </div>
-
-    //   {/* RIGHT SIDE */}
-    //   <div className="login-right">
-    //     <form onSubmit={handleSubmit} className="login-form">
 
     return (
 
@@ -164,9 +141,13 @@ function Login() {
   Continue with Google
 </button> 
           {/* LINK */}
-          <Link to="/register" className="create">
-            Don’t have an account? <strong>Sign up</strong>
-          </Link>
+        <p
+  className="create"
+  onClick={openRegister}
+  style={{ cursor: "pointer" }}
+>
+  Don’t have an account? <strong>Sign up</strong>
+</p>
 
         </form>
       </div>

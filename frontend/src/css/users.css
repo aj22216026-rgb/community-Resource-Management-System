@@ -68,3 +68,119 @@
 .delete-btn:hover {
     background: #dc2626;
 }
+/* ==========================
+   MOBILE BUTTON
+========================== */
+
+.mobile-menu-btn {
+    display: none;
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    z-index: 1200;
+
+    border: none;
+    background: #0f172a;
+    color: white;
+
+    width: 45px;
+    height: 45px;
+
+    border-radius: 12px;
+    cursor: pointer;
+
+    font-size: 22px;
+
+    box-shadow: 0 8px 20px rgba(0,0,0,.2);
+}
+
+/* ==========================
+   CLOSE BUTTON
+========================== */
+
+.close-sidebar {
+    display: none;
+}
+
+/* ==========================
+   OVERLAY
+========================== */
+
+.sidebar-overlay {
+    position: fixed;
+    inset: 0;
+
+    background: rgba(0,0,0,.5);
+
+    z-index: 998;
+}
+
+/* ==========================
+   MOBILE
+========================== */
+
+@media (max-width: 768px) {
+
+    .mobile-menu-btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .sidebar {
+        position: fixed;
+        left: -280px;
+        top: 0;
+
+        width: 260px;
+        height: 100vh;
+
+        z-index: 999;
+
+        transition: 0.35s ease;
+    }
+
+    .sidebar-open {
+        left: 0;
+    }
+
+    .close-sidebar {
+        display: block;
+
+        position: absolute;
+        top: 15px;
+        right: 15px;
+
+        background: transparent;
+        border: none;
+
+        color: white;
+
+        font-size: 24px;
+        cursor: pointer;
+    }
+
+    .users-page,
+    .resource-header-top,
+    .dashboard-container,
+    .payment-page {
+        margin-left: 0 !important;
+        width: 100%;
+        padding-top: 80px;
+    }
+}@media (max-width: 768px) {
+
+    .users-page {
+        margin-left: 0;
+        padding: 15px;
+        padding-top: 80px;
+    }
+
+    .table-wrapper {
+        overflow-x: auto;
+    }
+
+    .users-table {
+        min-width: 800px;
+    }
+}

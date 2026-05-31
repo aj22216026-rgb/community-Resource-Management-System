@@ -54,6 +54,7 @@ const Users = () => {
       <div className="users-header">
         <h1>Users Management</h1>
         <p>Manage system users and roles</p>
+        <p>total: {users.length} users</p>
       </div>
 
       <div className="table-wrapper">
@@ -62,9 +63,10 @@ const Users = () => {
 
           <thead>
             <tr>
-              <th>ID</th>
+             <th>Profile Picture</th>
               <th>Name</th>
               <th>Email</th>
+              <th>Telephone</th>
               <th>Role</th>
               <th>Date Joined</th>
               <th>Actions</th>
@@ -76,10 +78,15 @@ const Users = () => {
               users.map((user) => (
                 <tr key={user.id}>
 
-                  <td>{user.id}</td>
-                  <td>{user.name}</td>
-                  <td>{user.email}</td>
+                  <td>
+                    <img
+                      src={`http://localhost:5000/upload/profile/${user.profile_pic}`} className="profile-pic" />
 
+                     
+                  </td>
+                  <td>{user.username}</td>
+                  <td>{user.email}</td>
+                  <td>{user.tell}</td>
                   <td>
                     <select
                       value={user.role}

@@ -10,6 +10,8 @@ import SideBar from './SideBar';
 import axios from 'axios';
 
 
+
+
 function UserDashboard() {
 
   const [totalAvailable, setAvailable] = useState(0);
@@ -96,7 +98,8 @@ const groupedResources = Object.values(
         <p className="resource-dash">Tap any resource icon to explore details and access what’s available</p>
 
         <SideBar />
-        <div className="main-card">
+<div className="main-card">
+
   {groupedResources.map((card, index) => {
     const percentage = (card.available / card.total) * 100;
 
@@ -107,18 +110,17 @@ const groupedResources = Object.values(
             {card.type.toLowerCase() === "football field" ? (
               <GiSoccerField color="green" />
             ) : card.type.toLowerCase() === "tractor" ? (
-            <FaTractor color="red" />
-          ) : card.type.toLowerCase() === "farm" ? (
-            <GiTreeBranch color="green" />
-          ) : card.type.toLowerCase() === "car" ? (
-            <FaCarSide color="blue" />
-           ) :
-          (
+              <FaTractor color="red" />
+            ) : card.type.toLowerCase() === "farm" ? (
+              <GiTreeBranch color="green" />
+            ) : card.type.toLowerCase() === "car" ? (
+              <FaCarSide color="blue" />
+            ) : (
+              <SiPivotaltracker color="orange" />
+            )}
+          </div>
+        </Link>
 
-            < SiPivotaltracker color="orange" />
-          )}
-        </div>
-</Link>
         <h3>{card.type}</h3>
 
         <p className="stats">
@@ -131,10 +133,31 @@ const groupedResources = Object.values(
             style={{ width: `${percentage}%` }}
           />
         </div>
-
       </div>
     );
   })}
+
+  {/* MOCK MAIN HALL CARD */}
+
+  <div className="card mock-card">
+
+    <div className="card-icon">
+      🏢
+    </div>
+
+    <h3>Main Hall</h3>
+
+    <p className="stats">
+      Coming Soon
+    </p>
+
+    <div className="progress-bar">
+      <div
+        className="progress-fill"
+        style={{ width: "100%" }}
+      />
+    </div>
+  </div>
 </div>
 
       

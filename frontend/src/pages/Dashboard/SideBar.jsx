@@ -5,6 +5,8 @@ import { useAuth } from "../../context/AuthContext";
 import { jsx } from "react/jsx-runtime";
 import "../../css/sideBar.css";
 
+
+
 function SideBar() {    
     const { user, setUser } = useAuth();
     const[menuItems,setMenuItems]=useState([]);
@@ -28,7 +30,7 @@ function SideBar() {
         localStorage.removeItem("token");
         localStorage.removeItem("user");
         setUser(null);
-        window.location.href = "/login";
+        window.location.href = "/#";
     };
 useEffect(()=>{
     if(user?.role==="admin"){

@@ -15,6 +15,7 @@ import Dashboard from './components/layout/Dashboard'
 import ResourceDetail from './pages/ResourceDetail'
 // import PaymentForm from './pages/PaymentForm'
 import UserPayment from './pages/userPayment'
+import About from "./pages/About";
 
 import Users from "./pages/Dashboard/Users";
 
@@ -30,7 +31,7 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-        
+          <Route path="/about" element={<About />} />
 
            <Route path="/dashboard" element={<Dashboard />} >
             <Route path="manage-bookings" element={<ManageBooking />} />

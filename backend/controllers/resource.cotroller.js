@@ -1,12 +1,14 @@
 import db from '../config/db.js';
 
 
+
 export const  createResource=async (req,res)=>{ 
    
 const { name,type,status,price,capacity,description } = req.body;
 if (!name || !price || !capacity || !description) {
     return res.status(400).json({ error: "All fields are required" });  
 }
+
 
 
 try {
@@ -60,3 +62,15 @@ export const getResourceById = async (req, res) => {
     });
   }
 };
+export const deleteResource = async (req, res) => {
+    try {
+        const { id } = req.params;  
+        const query = "DELETE FROM resources WHERE id = ?";
+        const [result] = await db.query(query, [id]);
+        return res.status(200).json({ message: "Resource deleted successfully" });
+    } catch (error) {
+        console.error("Error deleting resource:", error);
+        return res.status(500).json({ error: "Internal server error" });
+    }
+};  
+

@@ -4,20 +4,44 @@ import axios from 'axios';
 import { ArrowLeft, Pen, Trash, Plus} from 'lucide-react';
 import { Link } from "react-router-dom";
 import ResourceForm from "./ResourceForm";
+import {api} from "../../api/axios";
+
 function Resource() {
     const [openModal, setOpenModal] = useState(false);
     const [resources, setResources] = useState([])
+    
     useEffect(() => {
-        axios.get('http://localhost:5000/resources/fetch')
-            .then(response => {
-                // setResources(response.data.result);
-                console.log("response form resource", response.data.result)
-                setResources(response.data.result[0])
-            })
-            .catch(error => {
-                console.error('Error fetching resources:', error);
-            });
+fetchResources();
     }, [])
+
+    const fetchResources = async () => {        
+        try {
+            const response = await api.get("/resources/fetch");
+            console.log("Fetched resources:", response.data);
+            setResources(response.data.result[0]);
+        } catch (error) {
+            console.error("Error fetching resources:", error);
+        }   
+    };
+    
+  
+
+
+    const deleteResource = async (rId) => {
+        try {
+          await api.delete(`/resources/delete/${rId}`,{     
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem("token")}`,
+              },
+          });
+          alert("Resource deleted successfully");
+          // fetchResources();
+        } catch (error) {
+          console.error("Error deleting resource:", error);
+        }
+        };
+        
+
 
     return (
 
@@ -87,9 +111,16 @@ function Resource() {
                                 <button className='btn-edit'>
                                   <Pen size={16} />
                                 </button>
-                                <button className='btn-delete'>
-                                    <Trash size={16} />
-                                </button>
+ <button
+                      className="delete-btn"
+                      onClick={() =>
+                        deleteUser(user.id)
+                      }
+                    >
+                       <Trash size={16} />
+                    </button>
+
+
                             </td>
                         </tr>
                     ))} 
