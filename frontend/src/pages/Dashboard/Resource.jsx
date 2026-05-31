@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import "../../css/Resource.css"
+import "../../css/resource.css"
 import axios from 'axios';
 import { ArrowLeft, Pen, Trash, Plus} from 'lucide-react';
 import { Link } from "react-router-dom";
