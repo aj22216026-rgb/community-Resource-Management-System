@@ -6,7 +6,7 @@ import { createResourceTable } from './models/resourceModel.js';
 import cors from 'cors';
 import { userRouter } from './routers/user.route.js';
 import { resourceRouter } from './routers/resources.js';
-import { createPaymentTable } from './models/paymentModel.js';
+import { createPaymentTable } from './models/PaymentModel.js';
 
 import dotenv from 'dotenv';
 import { paymentRouter } from './routers/payment.route.js';
