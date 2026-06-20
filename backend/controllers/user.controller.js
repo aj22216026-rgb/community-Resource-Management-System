@@ -162,3 +162,36 @@ export const deleteUser = async (req, res) => {
     return res.status(500).json({ message: "Internal server error" });
   }
 };
+// update user 
+export const updateUser = async (req, res) => {
+  const userId = req.user.id;
+  const { username, email, tell } = req.body;
+  const profile_pic = req.file ? `/upload/profiles/${req.file.filename}` : null;
+
+  try {
+    const [existingUser] = await db.query("SELECT * FROM users WHERE id=?", [userId]);
+    if (existingUser.length === 0) {
+      return res.status(404).json({ message: "User not found" });
+    }
+    const normalizedEmail = email.toLowerCase();
+    const [emailCheck] = await db.query("SELECT * FROM users WHERE email=? AND id!=?", [normalizedEmail, userId]);
+    if (emailCheck.length > 0) {
+      return res.status(409).json({ message: "Email already exists" });
+    }
+    const updateFields = {
+      username: username || existingUser[0].username,
+      email: normalizedEmail || existingUser[0].email,
+      tell: tell || existingUser[0].tell,
+      profile_pic: profile_pic || existingUser[0].profile_pic
+    };
+
+    const [result] = await db.query("UPDATE users SET ? WHERE id=?", [updateFields, userId]);
+    if (result.affectedRows === 0) {
+      return res.status(404).json({ message: "User not found" });
+    }
+    return res.status(200).json({ message: "User updated successfully" });
+  } catch (error) {
+    console.error("Error updating user:", error);
+    return res.status(500).json({ message: "Internal server error" });
+  }
+};

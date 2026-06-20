@@ -15,9 +15,9 @@ dotenv.config();
 
 const app=express();
 
-await createUsersTable();
-await createResourceTable();
-await createPaymentTable();
+//await createUsersTable();
+//await createResourceTable();
+//sawait createPaymentTable();
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);

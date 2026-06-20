@@ -1,5 +1,5 @@
 import express from 'express';
-import { createUser, loginUser,getAllUsers,getUserInfo,deleteUser,updateUserRole} from '../controllers/user.controller.js';
+import { createUser, loginUser,getAllUsers,getUserInfo,deleteUser,updateUserRole,updateUser} from '../controllers/user.controller.js';
 import { verifyToken } from '../middleware/verifyToken.js';
 import multer from '../config/multer.js';
 
@@ -22,5 +22,8 @@ router.put('/update_role/:id', verifyToken, updateUserRole);
 
 // http://localhost:5000/users/delete_user/:id
 router.delete('/delete_user/:id', verifyToken, deleteUser);
+
+// http://localhost:5000/users/update_user/:id
+router.put('/update_user/:id', verifyToken, multer.single('profile_pic'), updateUser);
 
 export { router as userRouter };

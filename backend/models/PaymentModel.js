@@ -25,6 +25,7 @@ export const createPaymentTable=async()=>{
     ) DEFAULT 'Pending',
 
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    is_read BOOLEAN DEFAULT FALSE,
 
     CONSTRAINT fk_payment_user
         FOREIGN KEY (user_id)

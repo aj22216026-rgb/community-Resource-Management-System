@@ -1,5 +1,5 @@
 import express from 'express';
-import { createPayment, getPayments,generateInvoice,paymentById } from '../controllers/payment.controller.js';
+import { createPayment, getPayments,generateInvoice,paymentById,approvePayment } from '../controllers/payment.controller.js';
 import { verifyToken } from '../middleware/verifyToken.js';
 
 const router=express.Router();
@@ -17,5 +17,8 @@ router.get('/invoice/:paymentId', verifyToken, generateInvoice);
 
 // http://localhost:3000/payments/my-payments
 router.get('/my-payments', verifyToken, paymentById);
+
+// http://localhost:3000/payments/approve/:paymentId
+router.put('/approve/:paymentId', verifyToken, approvePayment);
 
 export { router as paymentRouter };

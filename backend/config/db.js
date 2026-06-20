@@ -27,7 +27,7 @@ const db=pool.promise();
 db.query("SELECT 1")
 .then(() => {
     console.log("Connected to database");
-})
+   })
 .catch((err) => {
     console.error("Error connecting to database", err);
 });

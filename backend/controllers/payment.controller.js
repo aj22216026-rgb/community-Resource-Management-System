@@ -117,6 +117,7 @@ export const paymentById = async (req, res) => {
                 p.payment_date,
                 p.payment_status,
                 p.card_number,
+                p.is_read,
                 u.username,
                 u.email,
                 r.name AS resource_name,
@@ -185,60 +186,100 @@ export const generateInvoice = async (req, res) => {
         doc.pipe(res);
 
         // =========================
-        // HEADER
+        // HEADER SECTION (SAA STYLE)
         // =========================
+        doc.rect(0, 0, doc.page.width, 90).fill("#2563eb");
+
         doc
-            .fontSize(22)
-            .fillColor("#2563eb")
-            .text("RESOURCE MANAGEMENT SYSTEM", {
+            .fillColor("#ffffff")
+            .fontSize(20)
+            .text("RESOURCE MANAGEMENT SYSTEM", 50, 30, {
                 align: "center"
             });
 
         doc
-            .fontSize(16)
-            .fillColor("#000")
-            .text("PAYMENT INVOICE", {
+            .fontSize(12)
+            .text("OFFICIAL PAYMENT RECEIPT", {
                 align: "center"
             });
 
         doc.moveDown(2);
 
-        // =========================
-        // CUSTOMER INFO
-        // =========================
-        doc.fontSize(12).text(`Customer Name: ${data.username}`);
-        doc.text(`Email: ${data.email}`);
-        doc.text(`Invoice ID: #INV-${data.id}`);
-        doc.text(`Date: ${data.payment_date}`);
-        doc.moveDown();
+        // RESET COLOR
+        doc.fillColor("#000");
 
         // =========================
-        // TABLE HEADER
+        // RECEIPT BOX
         // =========================
+        doc
+            .rect(50, 110, 500, 160)
+            .stroke("#e5e7eb");
+
         doc
             .fontSize(12)
-            .fillColor("white")
-            .rect(50, doc.y, 500, 20)
-            .fill("#2563eb");
-
-        doc.fillColor("white").text("Item", 60, doc.y + 5);
-        doc.text("Days", 200, doc.y);
-        doc.text("Amount", 320, doc.y);
-        doc.text("Status", 420, doc.y);
-
-        doc.moveDown();
+            .text(`Receipt No: INV-${data.id}`, 60, 130)
+            .text(`Customer: ${data.username}`, 60, 150)
+            .text(`Email: ${data.email}`, 60, 170)
+            .text(`Resource: ${data.resource_name}`, 60, 190)
+            .text(`Type: ${data.type}`, 60, 210)
+            .text(`Date: ${new Date(data.payment_date).toDateString()}`, 60, 230);
 
         // =========================
-        // TABLE ROW
+        // STATUS BADGE
+        // =========================
+        const statusColor = data.payment_status === "Completed" ? "#16a34a" : "#f59e0b";
+
+        doc
+            .roundedRect(420, 130, 100, 30, 6)
+            .fill(statusColor);
+
+        doc
+            .fillColor("#fff")
+            .fontSize(12)
+            .text(data.payment_status, 420, 138, {
+                width: 100,
+                align: "center"
+            });
+
+        doc.fillColor("#000");
+
+        // =========================
+        // PAYMENT DETAILS BOX
         // =========================
         doc
-            .fillColor("#000")
-            .text(data.resource_name, 60)
-            .text(data.days.toString(), 200)
-            .text(`D${data.amount}`, 320)
-            .text(data.payment_status, 420);
+            .rect(50, 290, 500, 120)
+            .stroke("#e5e7eb");
 
-        doc.moveDown(3);
+        doc
+            .fontSize(12)
+            .text("PAYMENT DETAILS", 60, 305, {
+                underline: true
+            });
+
+        doc
+            .fontSize(12)
+            .text(`Days Booked: ${data.days}`, 60, 330)
+            .text(`Amount Paid: D${data.amount}`, 60, 350)
+            .text(`Payment Status: ${data.payment_status}`, 60, 370);
+
+        // =========================
+        // TOTAL BOX (RIGHT SIDE)
+        // =========================
+        doc
+            .roundedRect(350, 320, 170, 70, 8)
+            .fill("#f1f5f9");
+
+        doc
+            .fillColor("#000")
+            .fontSize(12)
+            .text("TOTAL PAID", 360, 330);
+
+        doc
+            .fontSize(18)
+            .fillColor("#2563eb")
+            .text(`D${data.amount}`, 360, 350);
+
+        doc.fillColor("#000");
 
         // =========================
         // FOOTER
@@ -247,12 +288,41 @@ export const generateInvoice = async (req, res) => {
             .fontSize(10)
             .fillColor("gray")
             .text(
-                "Thank you for using our system. This is a computer generated invoice.",
-                { align: "center" }
+                "This receipt is system generated and does not require a signature.",
+                50,
+                450,
+                { align: "center", width: 500 }
+            );
+
+        doc
+            .fontSize(10)
+            .fillColor("#2563eb")
+            .text(
+                "Thank you for using Resource Management System",
+                50,
+                470,
+                { align: "center", width: 500 }
             );
 
         doc.end();
 
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: "Server Error" });
+    }
+};
+
+export const approvePayment = async (req, res) => {
+    const paymentId = req.params.paymentId; 
+    try {
+        const [result] = await db.query(
+            "UPDATE payments SET is_read='1' WHERE id=?",
+            [paymentId]
+        );
+        if (result.affectedRows === 0) {
+            return res.status(404).json({ message: "Payment not found" });
+        }
+        res.status(200).json({ message: "Payment approved successfully" });
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: "Server Error" });
